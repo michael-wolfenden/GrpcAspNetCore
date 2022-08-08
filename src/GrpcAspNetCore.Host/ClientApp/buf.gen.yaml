@@ -1,0 +1,10 @@
+# NOTE: The paths will be relative to the GrpcAspNetCore.Host folder as that's where we will
+# running the buf generate command from
+version: v1
+plugins:
+  - remote: buf.build/bufbuild/plugins/es
+    out: ClientApp/src/grpc
+    opt: target=ts
+  - remote: buf.build/bufbuild/plugins/connect-web
+    out: ClientApp/src/grpc
+    opt: target=ts

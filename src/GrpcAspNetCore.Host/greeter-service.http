@@ -1,0 +1,6 @@
+###
+GRPC localhost:5000/greet.v1.GreeterService/SayHello
+
+{
+  "name": "World"
+}

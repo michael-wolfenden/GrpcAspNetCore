@@ -1,0 +1,32 @@
+{
+  "name": "grpc-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "postinstall": "pnpm generate-grpc-client",
+    "generate-grpc-client": "rimraf src/grpc && pnpm buf:lint && pnpm buf:generate",
+    "buf:lint": "cross-env-shell docker run --rm -v $INIT_CWD/..:/workspace --workdir /workspace bufbuild/buf lint ./Protos",
+    "buf:generate": "cross-env-shell docker run --rm -v $INIT_CWD/..:/workspace --workdir /workspace bufbuild/buf generate --template ClientApp/buf.gen.yaml ./Protos"
+  },
+  "dependencies": {
+    "@bufbuild/connect-web": "^0.1.0",
+    "@bufbuild/protobuf": "^0.0.10",
+    "@tanstack/react-query": "^4.0.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.4",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.0"
+  }
+}
